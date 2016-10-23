@@ -6,3 +6,76 @@ body {
   min-width: 100%;
   min-height: 100%;
 }
+
+h1 {
+  font-family: 'Architects Daughter', Arial,cursive, sans-serif;
+  text-align: center;
+}
+
+ul {
+  list-style: none;
+}
+
+li:hover {
+  font-family: 'Architects Daughter', Arial, cursive, sans-serif;
+  font-size: 2em;
+
+}
+
+input[type=radio] {
+  boder: 0px;
+  width: 20px;
+  height: 2em;
+}
+
+p{
+  font-family: 'Architects Daughter', Arial,cursive, sans-serif;
+}
+
+.quizContainer {
+  background-color: #daa520;
+  color: #ffffff;
+  border-radius: 6px;
+  width: 75%;
+  margin: auto;
+  padding-top: 5px;
+  box-shadow: 10px 10px 5px #888888;
+  position:relative;
+}
+
+.nextButton {
+  background-color: #daa520;
+  color: #ffffff;
+  box-shadow: 3px 5px #888888;
+  border-radius: 6px;
+  width: 100px;
+  heigh: 40px;
+  text-align: center;
+  font-family: 'Architects Daughter', Arial,cursive, sans-serif;
+  position: relative;
+  margin: auto;
+  padding-top: 20px;
+}
+
+.question {
+  font-family: 'Architect Daughter', Arial,cursive, sans-serif;
+  font-size: 2em;
+  width: 90%;
+  height: auto;
+  margin: auto;
+  border-radius: 6px;
+  background-color: #705114;
+  color: #ffffff;
+  text-align: center;
+}
+
+.quizMessage {
+  background-color: #702b14;
+  color: #ffffff;
+  border-radius: 6px;
+  width: 30%;
+  margin: auto;
+  text-align: center;
+  padding: 2px;
+  font-family: 'Architect Daughter', Arial, cursive, sans-serif;
+}

@@ -1,14 +1,15 @@
+//(function() {
 var questions = [{
   question: "What is the name of the school that Harry Potter went to?",
-  answers: ["Hogwarts School of Witchcraft and Wizardry", "Beauxbatons Academy of Magic", "Livermorny School of Witchcraft and Wizardry", "Durmstrang Institute"]
+  answers: ["Hogwarts School of Witchcraft and Wizardry", "Beauxbatons Academy of Magic", "Livermorny School of Witchcraft and Wizardry", "Durmstrang Institute"],
   correctAnswer: 0
  }, {
    question: "Who helped Harry Potter with Wizard's Chess?",
    answers: ["George", "Ron","Fred","Hermione"],
    correctAnswer: 1
  }, {
-   question: "What was the Headmaster's name?".
-   answers: ["Dolores Umbridge", "Minerva McGonagall","Albus Dumbledore", "Rubeus Hagrid"],
+   question: "What was the Headmaster's name?",
+   answers: ["Dolores Umbridge", "Minerva McGonagall", "Albus Dumbledore", "Rubeus Hagrid"],
    correctAnswer: 2
  }, {
    question: "Who was the keeper of the keys at Hogwarts?",
@@ -32,6 +33,10 @@ var questions = [{
    correctAnswer: 3
  }];
 
+ var currentQuestion = 0;
+ var correctAnswers = 0;
+ var quizOver = false;
+
 $(document).ready(function() {
   //Display the first question:
   displayCurrentQuestion();
@@ -42,19 +47,18 @@ $(document).ready(function() {
   $(this).find(".nextButton").on("click", function() {
     if (!quizOver) {
 
-      value =
-      $("input[type='radio']: checked").val();
+      value = $("input[type='radio']: checked").val();
 
       if (value == undefined) {
         $(document).find(".quizMessage").text("Please select an answer");
         $(document).find(".quizMessage").show();
         } else {
-        $(document).find(".quizMessage"),hide();
-        if(value == questions[currentQuestion], correctAnswer) {
+        $(document).find(".quizMessage").hide();
+        if(value == questions[currentQuestion].correctAnswer) {
           correctAnswer++;
         }
         currentQuestion++;
-        if(currentQuestion<questions.length) {
+        if(currentQuestion < questions.length) {
           displayCurrentQuestion();
         }else {
           displayScore();
@@ -73,7 +77,9 @@ $(document).ready(function() {
        displayCurrentQuestion();
        hideScore();
      }
-   });
+
+   };
+
  });
  //This displays the currentQuestion AND choices:
  function displayCurrentQuestion() {
@@ -83,9 +89,21 @@ $(document).ready(function() {
    var questionClass = $(document).find(".quizContainer > .question");
    var choiceList= $(document).find(".quizContainer > .choiceList");
    var numChoices = question[currentQuestion].choices.length;
+
    //Here I will set the questionClass text to the currentQuestion
    $(questionClass).text(question);
-   //Remove I will remove all <li> elements if any.
+
+   //Remove all <li> elements.
+   var choice; for (i = 0; i < numChoices; i++) {
+     choice = questions[currentQuestion].choices[i];
+     $('<li><input type="radio" value =' + 1 + ' name = dynradio" />' + choice + '</li>').appendTo(choiceList);
+   }
 
  }
-}
+  function displayScore() {
+   $(document).find(".quizContainer > .result").text("You score: "+ correctAnswer + " out of: " + questions.length);
+   $(document).find(".quizContainer > .result").show();
+
+   function hideScore() {
+     $(document).find(" .result").hide();
+   
